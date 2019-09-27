@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Book } from '../model/book';
+import { ActivatedRoute } from '@angular/router';
+import { BookService } from '../book.service';
 
 @Component({
   selector: 'ngb-book',
@@ -14,7 +16,9 @@ export class BookComponent implements OnInit {
   @Output()
   addNewBook: EventEmitter<Book> = new EventEmitter<Book>();
 
-  constructor() {
+  constructor(private route: ActivatedRoute, private bookService: BookService) {
+    const id = this.route.snapshot.params.id;
+    this.book = this.bookService.getBookById(Number(id));
   }
 
   ngOnInit() {
