@@ -8,11 +8,15 @@
   </thead>
 
   <tbody>
-  <tr>
-    <td>{{ books[0].id }}</td>
-    <td>Name</td>
-    <td>ISBN</td>
+  <tr *ngFor="let book of books"(click)="selectedBook = book">
+    <td>{{ book.id }}</td>
+    <td>{{ book.name }}</td>
+    <td>{{ book.isbn }}</td>
   </tr>
   </tbody>
 
 </table>
+
+<p *ngIf="selectedBook">
+  {{ selectedBook.name }}
+</p>

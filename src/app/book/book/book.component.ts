@@ -14,6 +14,8 @@ export class BookComponent implements OnInit {
     {id: 5, name: 'A Feast for Crows', isbn: '978-0553801507'}
   ];
 
+  selectedBook: Book;
+
   constructor() { }
 
   ngOnInit() {
