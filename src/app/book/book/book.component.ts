@@ -16,9 +16,27 @@ export class BookComponent implements OnInit {
 
   selectedBook: Book = new Book();
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  save() {
+    if (this.selectedBook.id) {
+      this.selectedBook = new Book();
+    } else {
+      this.selectedBook.id = this.createId();
+      this.books.push(this.selectedBook);
+    }
+  }
+
+  createId(): number {
+    const lastBook = this.books[this.books.length - 1];
+    if (lastBook) {
+      return lastBook.id + 1;
+    }
+    return 1;
   }
 
 }

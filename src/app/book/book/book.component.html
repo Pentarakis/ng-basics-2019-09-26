@@ -11,10 +11,16 @@
 
   <div>
     <label>
-      Name:<br>
+      ISBN:<br>
       <input name="isbn" [(ngModel)]="selectedBook.isbn">
     </label>
   </div>
+
+  <br>
+
+  <button (click)="save()">
+    New / Add
+  </button>
 
 </form>
 
