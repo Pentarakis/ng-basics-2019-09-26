@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Book } from '../model/book';
 
 @Component({
@@ -8,12 +8,24 @@ import { Book } from '../model/book';
 })
 export class BookComponent implements OnInit {
 
+  @Input()
   book: Book = new Book();
+
+  @Output()
+  addNewBook: EventEmitter<Book> = new EventEmitter<Book>();
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  save() {
+    if (this.book.id) {
+      this.book = new Book();
+    } else {
+      this.addNewBook.emit(this.book);
+    }
   }
 
 }

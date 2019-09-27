@@ -21,13 +21,9 @@ export class BookListComponent implements OnInit {
   ngOnInit() {
   }
 
-  save() {
-    if (this.selectedBook.id) {
-      this.selectedBook = new Book();
-    } else {
-      this.selectedBook.id = this.createId();
-      this.books.push(this.selectedBook);
-    }
+  save(book: Book) {
+    book.id = this.createId();
+    this.books.push(book);
   }
 
   createId(): number {
