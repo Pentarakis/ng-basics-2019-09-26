@@ -3,8 +3,9 @@
   <div>
     <label>
       Name:<br>
-      <input name="name" [(ngModel)]="selectedBook.name">
+      <input name="name" [(ngModel)]="book.name" required #myName="ngModel">
     </label>
+    <strong *ngIf="myName.dirty && myName.errors">Required!</strong>
   </div>
 
   <br>
@@ -12,39 +13,14 @@
   <div>
     <label>
       ISBN:<br>
-      <input name="isbn" [(ngModel)]="selectedBook.isbn">
+      <input name="isbn" [(ngModel)]="book.isbn">
     </label>
   </div>
 
   <br>
 
   <button (click)="save()">
-    New / Add
+    {{ book.id ? 'New' : 'Add' }}
   </button>
 
 </form>
-
-<br>
-
-<table>
-  <thead>
-    <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>ISBN</th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <tr *ngFor="let book of books"(click)="selectedBook = book">
-    <td>{{ book.id }}</td>
-    <td>{{ book.name }}</td>
-    <td>{{ book.isbn }}</td>
-  </tr>
-  </tbody>
-
-</table>
-
-<p *ngIf="selectedBook">
-  {{ selectedBook.name }}
-</p>
