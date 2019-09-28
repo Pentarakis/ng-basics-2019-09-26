@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Character } from '../model/character';
 import { CharacterService } from '../character.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'ngb-character-list',
@@ -9,7 +10,7 @@ import { CharacterService } from '../character.service';
 })
 export class CharacterListComponent implements OnInit {
 
-  characters: Character[];
+  characters: Observable<Character[]>;
   displayedColumns: string[] = ['id', 'name', 'culture'];
 
   constructor(private characterService: CharacterService) {
