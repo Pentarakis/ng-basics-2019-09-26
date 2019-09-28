@@ -4,10 +4,11 @@ import { CharacterComponent } from './character/character.component';
 import { CharacterListComponent } from './character-list/character-list.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
+import { CharacterRoutingModule } from './character-routing.module';
 
 
 
@@ -18,10 +19,11 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     MatCardModule,
     MatInputModule,
-    FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatTableModule,
-    RouterModule
+    RouterModule,
+    CharacterRoutingModule
   ]
 })
 export class CharacterModule { }

@@ -6,16 +6,16 @@
 
   <mat-card-content>
 
-    <form>
+    <form [formGroup]="form">
 
       <mat-form-field>
-        <input matInput name="name" placeholder="Name" [(ngModel)]="character.name">
+        <input matInput name="name" placeholder="Name" formControlName="name">
       </mat-form-field>
 
       <br>
 
       <mat-form-field>
-        <input matInput name="cutlure" placeholder="Culture" [(ngModel)]="character.culture">
+        <input matInput name="cutlure" placeholder="Culture" formControlName="culture">
       </mat-form-field>
 
     </form>

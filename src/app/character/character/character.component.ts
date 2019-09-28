@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CharacterService } from '../character.service';
 import { filter, pluck, switchMap, takeUntil } from 'rxjs/operators';
 import { Subject, Subscription } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'ngb-character',
@@ -12,11 +13,19 @@ import { Subject, Subscription } from 'rxjs';
 })
 export class CharacterComponent implements OnInit, OnDestroy {
 
-  character: Character = new Character();
   isCreateMode = true;
   destroy: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private route: ActivatedRoute, private characterService: CharacterService) {
+  form: FormGroup;
+
+  constructor(private route: ActivatedRoute, private characterService: CharacterService,
+              private fb: FormBuilder) {
+
+    this.form = this.fb.group({
+      id: [],
+      name: [],
+      culture: [],
+    });
 
     this.route.params
       .pipe(
@@ -25,7 +34,7 @@ export class CharacterComponent implements OnInit, OnDestroy {
         switchMap(id => this.characterService.read(Number(id))),
         takeUntil(this.destroy)
       )
-      .subscribe(character => this.character = character);
+      .subscribe(character => this.form.patchValue(character));
   }
 
   ngOnInit() {
